@@ -114,18 +114,8 @@ code {
   background-color: #a17bd0;
 }
 
-.black-ops-one-regular {
-  font-family: "Black Ops One", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
-
-
-.teko {
-  font-family: "Teko", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+h1 {
+  font-family: 'Orbitron';
 }
 
 .logo {
