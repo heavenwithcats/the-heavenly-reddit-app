@@ -152,7 +152,7 @@ p {
 
 .image{
 width: 800px;
-height: 600px;
+height: 800px;
 object-fit: cover;
 float: right;
 }
