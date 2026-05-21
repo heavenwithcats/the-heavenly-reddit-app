@@ -118,9 +118,9 @@ code {
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
   font-style: normal;
-display: block;
-margin-left: auto;
-margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: #9ca3af;
 }
 
 
@@ -136,13 +136,24 @@ width: 200px;
 height: 200px;
 border-radius: 50%;
 object-fit: cover;
-display: block;
+display:block;
 margin-left: auto;
 margin-right: auto;
 }
 
-h1{
-display: block;
-margin-left: auto;
-margin-right: auto;
+h1 {
+  text-align: center;
 }
+p {
+  text-align: right;
+  clear: right;
+  font-size: 24px;
+}
+
+.image{
+width: 800px;
+height: 600px;
+object-fit: cover;
+float: right;
+}
+
