@@ -121,7 +121,6 @@ code {
 display: block;
 margin-left: auto;
 margin-right: auto;
-
 }
 
 
@@ -143,5 +142,7 @@ margin-right: auto;
 }
 
 h1{
-  color:#73cad2
+display: block;
+margin-left: auto;
+margin-right: auto;
 }
