@@ -10,7 +10,7 @@ async function getStarWarsReddit() {
     }
     isFetching = true;
    const proxyUrl = 'https://corsproxy.io/?'
-       const targetUrl ='https://www.reddit.com/r/StarWars/hot.json?limit=25';
+       const targetUrl ='https://www.reddit.com/r/StarWars/new.json?limit=10000';
      if (afterID) {
         targetUrl += `&after=${afterID}`;
      }
@@ -31,14 +31,16 @@ async function getStarWarsReddit() {
             
             // Check if it's an image post
             if (p.url.includes('.jpg') || p.url.includes('.png') || p.url.includes('.gif')) {
+                const postId = p.id;
                 container.innerHTML += `
                 <div class="post-card">
                     <img class="image" src="${p.url}" alt="${p.title}">
                     <p class="teko">${p.title}</p>
                     <div class="actions">
-                        <button class="buttons">
-                            <img src="/lightsaber-like-inactive.png" alt="like">
+                        <button class="buttons" onclick="toggleLike('${postId}')" >
+                            <img id="like-${postId}" src="/lightsaber-like-inactive.png" alt="like">
                         </button>
+                        <br>
                         <button class="buttons">
                             <img src="/comment.png" alt="comments">
                         </button>
@@ -68,6 +70,16 @@ window.addEventListener('scroll', ()=> {
    getStarWarsReddit()
 }
 })
+
+function toggleLike(id) {
+    const like = document.getElementById(`like-${id}`);
+    if(like.src.includes('lightsaber-like-active.png')) {
+  like.src = '/lightsaber-like.png'
+
+    } else {
+  like.src = '/lightsaber-like-inactive.png'
+    }
+}
 
 // THIS LINE IS THE KEY: It tells the function to start!
 getStarWarsReddit();
