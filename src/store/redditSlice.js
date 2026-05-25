@@ -7,7 +7,9 @@ const initialState = {
     searchTerm: '',
     commentsByPostId: {},
     loadingComments: {},
+    afterId: null, // Track the next page
 }
+
 const redditSlice = createSlice({
     name: 'reddit',
     initialState,
@@ -18,7 +20,15 @@ const redditSlice = createSlice({
         },
         fetchPostsSuccess: (state, action) => {
             state.isLoading = false;
-            state.posts = [...state.posts, ...action.payload];
+            state.error = false;
+            
+            // Destructure the data object coming from your actions file
+            const { posts, afterId } = action.payload;
+            
+            if (Array.isArray(posts)) {
+                state.posts = [...state.posts, ...posts];
+            }
+            state.afterId = afterId;
         },
         fetchPostsFailure: (state) => {
             state.isLoading = false;
@@ -37,9 +47,9 @@ const redditSlice = createSlice({
             state.loadingComments[action.payload] = true;
         },
         fetchCommentsSuccess: (state, action) => {
-            const { postId, comments  } = action.payload;
+            const { postId, comments } = action.payload;
             state.loadingComments[postId] = false;
-            state.commentsByPostId[action.payload] = comments
+            state.commentsByPostId[postId] = comments;
          },
         fetchCommentsFailure: (state, action) => {
              state.loadingComments[action.payload] = false;
