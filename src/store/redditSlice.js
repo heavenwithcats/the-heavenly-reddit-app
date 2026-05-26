@@ -54,10 +54,15 @@ const redditSlice = createSlice({
         fetchCommentsFailure: (state, action) => {
              state.loadingComments[action.payload] = false;
         },
+        changeCategory: (state) => {
+            state.posts = [];
+            state.afterId = null;
+        }
     }
 })
 
 export const {
+    changeCategory,
     startFetchPosts,
     startFetchComments,
     fetchPostsSuccess,

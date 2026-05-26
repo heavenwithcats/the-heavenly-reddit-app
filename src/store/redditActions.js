@@ -9,7 +9,7 @@ import {
     fetchCommentsFailure
 } from '../store/redditSlice';
 
-export const fetchRedditPosts = () => async (dispatch, getState) => {
+export const fetchRedditPosts = (subreddit = 'StarWars') = async(dispatch, getState) => async (dispatch, getState) => {
     const { isLoading, afterId } = getState().reddit;
     if (isLoading) return;
 
@@ -17,7 +17,7 @@ export const fetchRedditPosts = () => async (dispatch, getState) => {
         dispatch(startFetchPosts());
 
         const proxyUrl = 'https://corsproxy.io/?';
-        let targetUrl = 'https://www.reddit.com/r/StarWars/hot.json?limit=25';
+        let targetUrl = 'https://www.reddit.com/r/${subreddit}/hot.json?limit=25';
     
         if (afterId) {
             targetUrl += `&after=${afterId}`;

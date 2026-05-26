@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRedditPosts, fetchPostComments } from './store/redditActions';
-import { togglePostLike, setSearchTerm } from './store/redditSlice';
+import { togglePostLike, setSearchTerm, changeCategory } from './store/redditSlice';
+import { label } from 'framer-motion/client';
 
 function App() {
   const dispatch = useDispatch();
   
+  const categories = [
+{ label: 'All Star Wars', value: 'StarWars', src: '/all-star-wars.jpg' },
+  { label: 'The Mandalorian', value: 'TheMandalorian', src: '/the-mandalorian.jpg' },
+  { label: 'Star Wars Lore', value: 'StarWarsLore', src: '/star-wars-lore.jpg' },
+  { label: 'Lego Star Wars', value: 'legostarwars', src: '/lego-star-wars.jpg' }
+  ]
+
   // Grab our centralized data states from the Redux store
   const { posts, isLoading, error, searchTerm, commentsByPostId, loadingComments } = useSelector((state) => state.reddit);
   
@@ -80,61 +88,60 @@ function App() {
       <img className="logo" src="/jedi-reddit-logo.png" alt="jedi reddit" />
       <h1 className="black-ops-one-regular">Star Wars Reddit</h1>
 
-      {/* RE-STYLED SEARCH BAR & BUTTON FLEX CONTAINER */}
-      <div className="search-container" style={{ 
-        margin: '20px auto', 
-        maxWidth: '500px', 
-        padding: '0 20px',
-        display: 'flex',
-        gap: '10px',
-        alignItems: 'center'
-      }}>
+      {/* SEARCH CONTAINER WITH YOUR ORIGINAL CLEAN PROPERTIES */}
+      <div className="search-container">
         <input
           type="text"
           placeholder="Type transmission keyword..."
           value={localSearch}
           onChange={(e) => setLocalSearch(e.target.value)}
           className="teko"
-          style={{
-            flex: 1,
-            padding: '10px 15px',
-            fontSize: '20px',
-            background: '#111',
-            border: '2px solid var(--border)',
-            borderRadius: '4px',
-            color: 'white',
-            letterSpacing: '1px'
-          }}
         />
-        <button className="buttons" onClick={handleSearchSubmit} style={{ height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {/* UPDATED: Uses your requested custom Tie Fighter asset! */}
-          <img src="/tie-fighter-search.png" alt="search" style={{ height: '100%', width: 'auto' }} />
+        <button className="buttons" onClick={handleSearchSubmit}>
+          <img src="/tie-fighter-search.png" alt="search" />
         </button>
+      </div>
+      <div className='category-container'>
+      {categories.map((cat) => (
+     <button key={cat.value} className='buttons' onClick={() => {
+      dispatch(changeCategory());
+      dispatch(fetchRedditPosts(cat.value));
+     }}>
+      <img src={cat.src} alt={cat.label} />
+      <span>{cat.label}</span>
+     </button>
+      ))}
       </div>
 
       {/* Main card grid stream */}
       <div id="star-wars-container">
         {filteredPosts.map((post) => (
           <div key={post.id} className="post-card">
-            <p className="teko">{post.title}</p>
-            <p style={{ fontSize: '14px', color: '#9ca3af', marginBottom: '10px', textAlign: 'left' }}>
-              Posted by u/{post.author} • {post.timeAgo}
-            </p>
             
-            {/* UPDATED: Image tag with integrated fallback checking */}
+            {/* 1. IMAGE FIRST */}
             <img 
               className="image" 
               src={
                 post.image && post.image.startsWith("http") && !post.image.includes("thumb")
                   ? post.image
-                  : "https://images.unsplash.com/photo-1563089145-599997674d42?w=600" // Star Wars lightsaber theme asset
+                  : "https://images.unsplash.com/photo-1563089145-599997674d42?w=600"
               } 
               alt={post.title} 
+              width="100%"
+              height="auto"
+              loading="lazy"
               onError={(e) => {
-                // If a link reports broken layout half-way through, swap to our cinematic Star Wars background
                 e.target.src = "https://images.unsplash.com/photo-1563089145-599997674d42?w=600";
               }}
             />
+
+            {/* 2. TITLE SECOND */}
+            <p className="teko">{post.title}</p>
+            
+            {/* 3. AUTHOR METADATA THIRD */}
+            <p className='teko' style={{fontSize: '14px'}}>
+              Posted by u/{post.author} • {post.timeAgo}
+            </p>
 
             <div className="actions">
               <button className="buttons" onClick={() => dispatch(togglePostLike(post.id))}>
@@ -152,7 +159,7 @@ function App() {
             {/* DYNAMIC UNRAVELLING DISCUSSION DRAWER */}
             {openCommentId === post.id && (
               <div className="comment-section" style={{ textAlign: 'left', marginTop: '20px', background: 'var(--code-bg)', padding: '15px', borderRadius: '6px', border: '1px solid var(--border)' }}>
-                <h3 className="teko" style={{ fontSize: '22px', margin: '0 0 10px 0', color: 'var(--text-h)' }}>
+                <h3 className="teko">
                   DECODED TRANSMISSIONS:
                 </h3>
                 
@@ -171,14 +178,15 @@ function App() {
 
         {/* Backup notice if search yields no results */}
         {filteredPosts.length === 0 && !isLoading && (
-          <p className="teko" style={{ fontSize: '24px', color: '#aaa', marginTop: '40px' }}>
+          <p className="teko">
             No records found in the Jedi archives matching that query.
           </p>
         )}
       </div>
 
+      {/* FIXED SYNTAX BLOCK HERE */}
       {isLoading && (
-        <p className="loading" style={{ textAlign: 'center', padding: '20px' }}>
+        <p className="teko">
           Loading from a galaxy far far away...
         </p>
       )}
