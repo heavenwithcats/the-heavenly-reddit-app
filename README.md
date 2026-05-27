@@ -1,16 +1,34 @@
-# React + Vite
+# Star Wars Holonet Communication Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive futuristic online representation of the Jedi archives using data from Reddit read-only JSON API, Redux Toolkit, React, and stylized Google fonts.
 
-Currently, two official plugins are available:
+Here is the live demo link => () check it out to view specific categories such as The Mandalorian or Star Wars Lore!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **First Holo Wireframe**
+This was my first wireframe blueprint. It is equipped with a logo, heading, a line separating that heading from the posts. the posts includes working like and comment buttons, but it became so much more than I could ever imagine And I am happy to present it to you.
+* **Tech & Archives**
+*  Gemini AI,  who was like like C-3PO, to understand and build specific components.
+*  React and Redux, to create states and change them when necessary just like boosters on a Millennium Falcon.
+*  Reddit read only json API, to gather all the latest Jedi archives, including comments,  Working like the components and specific bolts that make spaceships work and fly correctly and easily. 
+*  Jest, to run tests and understand how my app works, so that I can define the problems fix them and make my app like a spaceship that flies more smoothly.
+*  **Features**
+* A holo net search bar, to search for latest jedi archives under a specific word such as lightsaber. 
+*  A like button, that changes into a pair of glowing lightsabers when clicked to show that you like a specific post.
+* A comment button to decode latest transmissions about a specific post.
+*  A error state that shows Darth Vader when your computer is out of range or not set up correctly.
+*  Categories to switch to other subreddits such as star Wars lore and Lego Star Wars posts.
+*   Infinite scrolling so that you can have unlimited amount of data to look through.
+*  **Future Work**
+In the future I would like to implement specific new features such as:
+* More categories to choose from.
+* Somehow save what posts were liked so if you refresh the page the posts you have liked are still saved.
+* **Local Configuration**
+1. Clone the Repository
+git clone https://github.com/
+cd 
+2. Fuel Dependencies
+npm run dev
+3.  Running Tests
+* Test Assertion Maps

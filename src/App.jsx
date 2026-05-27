@@ -101,15 +101,17 @@ function App() {
           <img src="/tie-fighter-search.png" alt="search" />
         </button>
       </div>
-      <div className='category-container'>
+      <div className='cat-con'>
       {categories.map((cat) => (
-     <button key={cat.value} className='buttons' onClick={() => {
+        <div className='cat-item'>
+     <button key={cat.value} className='cat-btn' onClick={() => {
       dispatch(changeCategory());
       dispatch(fetchRedditPosts(cat.value));
      }}>
       <img src={cat.src} alt={cat.label} />
-      <span>{cat.label}</span>
      </button>
+     <p className='teko'>{cat.label}</p>
+      </div>
       ))}
       </div>
 

@@ -110,8 +110,6 @@ code {
   background: var(--code-bg);
 }
 
-
-
 .black-ops-one-regular {
   font-family: "Black Ops One", system-ui;
   font-weight: 400;
@@ -121,23 +119,21 @@ code {
   border-bottom: #9ca3af;
 }
 
-
 .teko {
   font-family: "Teko", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  
 }
 
 .logo {
-width: 200px;
-height: 200px;
-border-radius: 50%;
-object-fit: cover;
-display:block;
-margin-left: auto;
-margin-right: auto;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h1 {
@@ -152,27 +148,27 @@ p {
   max-width: 800px;
   width: 90%;
   margin: 20px auto;
- background: var(--bg);
- padding: 15px;
- border: 1px solid var(--border);
- border-radius: 8px;
- box-sizing: border-box;
+  background: var(--bg);
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-.image{
-width: 100%;
-max-width: 800px;
-height: auto;
-aspect-ratio: 1/1;
-object-fit: cover;
-display: block;
-margin: 0 auto 15px
+.image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 15px;
 }
 
 .buttons img {
-width: 50px;
-height: 50px;
-display: block;
+  width: 50px;
+  height: 50px;
+  display: block;
 }
 
 .buttons {
@@ -181,23 +177,23 @@ display: block;
   border-radius: 50%;
   width: 50px;
   object-fit: cover;
-height: 50px;
-display: flex;
-justify-content: center;
-align-items: center;
-cursor: pointer;
-overflow: hidden;
-transition: all 0.2 ease;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
 .buttons:hover {
-  border-color: #003da0;
+  border-color: #3279eb;
   transform: scale(1.05);
-  box-shadow: 0 0 10px rgba(10, 23, 255, 0.66);
+  box-shadow: 0 0 10px rgba(150, 154, 232, 0.812);
 }
 
 .actions {
-  display:flex;
+  display: flex;
   flex-direction: row;
   gap: 15px;
   margin-top: 10px;
@@ -208,9 +204,48 @@ transition: all 0.2 ease;
   gap: 10px;
   max-width: 500px;
   margin: 20px auto;
- text-align: center;
+  text-align: center;
 }
 
+.cat-con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 25px auto;
+  max-width: 90%;
+  flex-wrap: wrap;
+}
+
+.cat-item {
+  display: flex;
+  align-items: center;
+}
+
+.cat-btn {
+  background: #111;
+  border: 2px solid #333;
+  border-radius: 12px;
+  height: auto;
+  width: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-btn img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.cat-btn:hover {
+  border-color: #30d43e;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(133, 231, 135, 0.788);
+}
 
 @media (max-width: 600px) {
   p {
