@@ -31,4 +31,5 @@ cd
 2. Fuel Dependencies
 npm run dev
 3.  Running Tests
+npm run test
 * Test Assertion Maps
